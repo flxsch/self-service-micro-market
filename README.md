@@ -1,8 +1,8 @@
-## Requirements
-- Java 21
+# Self service micro market
 
-## Getting started
-To run a specific service
-1. Change to backend root `cd backend`
-2. Build common project `./gradlew.bat :common:build`
-3. Run microservice `./gradlew.bat :{SERVICENAME}:bootRun
+## Backend
+[README.md](backend/README.md)
+
+## Git
+- Commit name should start with: `GH-{ISSUENUMBER}:`
+- Branch name should start with `{ISSUE_NUMBER}-`

@@ -16,9 +16,9 @@ jmx.log
 derby.log
 
 # Gradle artifacts
-.gradle
+backend/.gradle
 .gradletasknamecache
-/build
+/backend/build
 buildSrc/build
 /spring-*/build
 /framework-*/build
