@@ -1,0 +1,5 @@
+rootProject.name = 'self-service-micro-market'
+
+include 'core-service'
+include 'payment-service'
+include 'common'
