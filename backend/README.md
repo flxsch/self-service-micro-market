@@ -9,14 +9,14 @@ To run a specific service
 
 ## Coding standards
 ### Naming
-| Object               | Naming Rule      | Example                      |
-|----------------------|------------------|------------------------------|
-| Files                | PascalCase       | FooBar.java                  |
-| Packages             | lowercase        | com.micromarket.core_service |
-| Components / Classes | PascalCase       | FooBar                       |
-| Variables            | camelCase        | nameAndDescription           |
-| Constants            | UPER_SNACKE_CASE | VERY_IMPORANT_CONSTANT       |    
-| Methods              | camelCase        | doSomething                  |
+| Object               | Naming Rule       | Example                      |
+|----------------------|-------------------|------------------------------|
+| Files                | PascalCase        | FooBar.java                  |
+| Packages             | lowercase         | com.micromarket.core_service |
+| Components / Classes | PascalCase        | FooBar                       |
+| Variables            | camelCase         | nameAndDescription           |
+| Constants            | UPPER_SNACKE_CASE | VERY_IMPORTANT_CONSTANT      |    
+| Methods              | camelCase         | doSomething                  |
 
 ### Structure
 The code in our spring application is structured and divided based on the resources. A package consists of a repository, service (interface and implementation), controller, model, modelDTO and mapper for the model:
