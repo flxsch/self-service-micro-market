@@ -14,6 +14,9 @@ classes/
 jxl.log
 jmx.log
 derby.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
 
 # Gradle artifacts
 backend/.gradle
@@ -59,23 +62,8 @@ node_modules
 # Frontend
 
 # dependencies
-/frontend/node_modules
-/frontend/.pnp
-/frontend.pnp.js
+**/node_modules
 
 # testing
-/frontend/coverage
+**/coverage
 
-# production
-/frontend/build
-
-# misc
-/frontend.DS_Store
-/frontend.env.local
-/frontend.env.development.local
-/frontend.env.test.local
-/frontend.env.production.local
-
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
