@@ -20,10 +20,10 @@ public abstract class ExtendedEntity {
     private String id;
 
     @Setter
-    private Long createdByUserId;
+    private String createdByUserId;
 
     @Setter
-    private Long updatedByUserId;
+    private String updatedByUserId;
 
     @Setter
     @JoinColumn(updatable = false)
