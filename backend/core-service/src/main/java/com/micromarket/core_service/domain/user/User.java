@@ -9,25 +9,23 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User extends ExtendedEntity {
-    @Getter
-    @Setter
     @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Getter
-    @Setter
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Getter
-    @Setter
+
     @Column(name = "email", unique = true, nullable = false)
     private String email;
-    @Getter
-    @Setter
+
     @Column(name = "birth_date")
     private LocalDate birthDate;
+
     public User() {
         super();
     }
