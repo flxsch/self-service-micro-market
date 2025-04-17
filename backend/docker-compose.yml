@@ -1,20 +1,20 @@
 services:
   core-db:
-    image: postgres:latest
-    container_name: ${DB_CORE_NAME}
+    image: postgres:17-alpine
+    container_name: ${DB_CORE_CONTAINER_NAME}
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_CORE_NAME}
     ports:
-      - ${DB_CORE_PORT}:${DB_CORE_PORT}
+      - ${DB_CORE_PORT}:${DB_DOCKER_PORT}
 
   payment-db:
-    image: postgres:latest
-    container_name: ${DB_PAYMENT_NAME}
+    image: postgres:17-alpine
+    container_name: ${DB_PAYMENT_CONTAINER_NAME}
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_PAYMENT_NAME}
     ports:
-      - ${DB_PAYMENT_PORT}:${DB_PAYMENT_PORT}
+      - ${DB_PAYMENT_PORT}:${DB_DOCKER_PORT}
