@@ -1,3 +1,4 @@
+version: '3.9'
 services:
   core-db:
     image: postgres:17-alpine

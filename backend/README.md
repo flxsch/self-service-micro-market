@@ -18,8 +18,9 @@
 ## Getting started
 To run a specific service
 1. Change to backend root `cd backend`
-2. Build common project `./gradlew.bat :common:build`
-3. Run microservice `./gradlew.bat :{SERVICENAME}:bootRun`
+2. Start the DB `docker compose -p "micromarcetdbs" up -d`
+3. Build common project `./gradlew.bat :common:build`
+4. Run microservice `./gradlew.bat :{SERVICENAME}:bootRun`
 
 ## Coding standards
 ### Naming
