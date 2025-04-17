@@ -1,6 +1,5 @@
 package com.micromarket.core_service.domain.order.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.micromarket.common.generic.BaseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
