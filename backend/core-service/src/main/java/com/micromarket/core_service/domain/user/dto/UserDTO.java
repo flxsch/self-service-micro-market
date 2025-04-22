@@ -11,7 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO extends BaseDTO {
-    protected String firstName;
-    protected String lastName;
-    protected String email;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String language;
 }
