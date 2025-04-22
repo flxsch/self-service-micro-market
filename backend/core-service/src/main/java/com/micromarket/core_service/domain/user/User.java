@@ -26,6 +26,9 @@ public class User extends ExtendedEntity {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
+    @Column(name = "language")
+    private String language;
+
     public User() {
         super();
     }
