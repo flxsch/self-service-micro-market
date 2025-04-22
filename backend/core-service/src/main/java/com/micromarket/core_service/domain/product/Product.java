@@ -9,38 +9,28 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "product")
 public class Product extends ExtendedEntity {
-    @Getter
-    @Setter
     @Column(name = "language", nullable = false)
     private String language;
 
-    @Getter
-    @Setter
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Getter
-    @Setter
     @Column(name = "category", nullable = false)
     private String category;
 
-    @Getter
-    @Setter
     @Column(name = "stock", nullable = false)
     private Number stock;
 
-    @Getter
-    @Setter
     @Column(name = "price", nullable = false)
     private Number price;
 
-    @Getter
-    @Setter
-    @Column(name = "barcode_id", nullable = false)
-    private String barcodeId;
+    @Column(name = "barcode", nullable = false)
+    private String barcode;
 
     public Product() {
         super();
