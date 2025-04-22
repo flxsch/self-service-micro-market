@@ -1,13 +1,10 @@
 package com.micromarket.core_service.domain.order;
 
 import com.micromarket.common.generic.ExtendedEntity;
-import com.micromarket.core_service.domain.product.Product;
 import com.micromarket.core_service.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Set;
 
 @Getter
 @Setter
