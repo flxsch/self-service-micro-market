@@ -24,5 +24,5 @@ public class ProductDTO extends BaseDTO {
 
     private Number price;
 
-    private String barcodeId;
+    private String barcode;
 }
