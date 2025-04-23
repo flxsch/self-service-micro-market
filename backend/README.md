@@ -22,6 +22,9 @@ To run a specific service
 3. Build common project `./gradlew.bat :common:build`
 4. Run microservice `./gradlew.bat :{SERVICENAME}:bootRun`
 
+## Postman
+https://www.postman.com/lively-crater-269365/self-service-micro-market/overview
+
 ## Coding standards
 ### Naming
 | Object               | Naming Rule       | Example                      |
