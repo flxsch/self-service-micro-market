@@ -1,4 +1,4 @@
-package com.micromarket.core_service.domain;
+package com.micromarket.core_service.domain.orderproduct;
 
 import com.micromarket.core_service.domain.order.Order;
 import com.micromarket.core_service.domain.product.Product;

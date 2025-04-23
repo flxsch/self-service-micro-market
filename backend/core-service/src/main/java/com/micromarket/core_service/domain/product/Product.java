@@ -1,7 +1,7 @@
 package com.micromarket.core_service.domain.product;
 
 import com.micromarket.common.generic.ExtendedEntity;
-import com.micromarket.core_service.domain.OrderProduct;
+import com.micromarket.core_service.domain.orderproduct.OrderProduct;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
