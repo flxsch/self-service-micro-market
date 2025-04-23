@@ -20,7 +20,7 @@ public class ProductController {
         this.productMapper = productMapper;
     }
 
-    @GetMapping("")
+    @GetMapping({"", "/"})
     public ResponseEntity<Collection<ProductDTO>> getAllProducts() {
         return new ResponseEntity<>(
                 productMapper.toDTOs(productService.findAll()),
@@ -28,7 +28,7 @@ public class ProductController {
         );
     }
 
-    @GetMapping("/{id}")
+    @GetMapping({"/{id}", "/{id}/"})
     public ResponseEntity<ProductDTO> getProductById(@PathVariable String id) {
         try {
             Product product = productService.findById(id);
@@ -41,13 +41,13 @@ public class ProductController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping({"", "/"})
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO product) {
         Product created = productService.save(productMapper.fromDTO(product));
         return new ResponseEntity<>(productMapper.toDTO(created), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping({"/{id}", "/{id}/"})
     public ResponseEntity<Product> updateProduct(@PathVariable String id, @RequestBody ProductDTO product) {
         Product entity = productMapper.fromDTO(product);
 
@@ -63,7 +63,7 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping({"/{id}", "/{id}/"})
     public ResponseEntity<Void> deleteProduct(@PathVariable String id) {
         try {
             productService.deleteById(id);
