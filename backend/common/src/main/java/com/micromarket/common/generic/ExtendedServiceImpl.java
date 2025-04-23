@@ -25,7 +25,7 @@ public abstract class ExtendedServiceImpl<T extends ExtendedEntity> implements E
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(String id) throws NoSuchElementException {
         if (repository.existsById(id)) {
             repository.deleteById(id);
         } else {
@@ -51,7 +51,7 @@ public abstract class ExtendedServiceImpl<T extends ExtendedEntity> implements E
     }
 
     @Override
-    public T findById(String id) {
+    public T findById(String id) throws NoSuchElementException {
         Optional<T> optional = repository.findById(id);
 
         if (optional.isPresent()) {
