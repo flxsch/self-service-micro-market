@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   core-db:
-    image: postgres:17-alpine
+    image: postgres:16-alpine
     container_name: ${DB_CORE_CONTAINER_NAME}
     environment:
       POSTGRES_USER: ${DB_USERNAME}
@@ -11,7 +11,7 @@ services:
       - ${DB_CORE_PORT}:${DB_DOCKER_PORT}
 
   payment-db:
-    image: postgres:17-alpine
+    image: postgres:16-alpine
     container_name: ${DB_PAYMENT_CONTAINER_NAME}
     environment:
       POSTGRES_USER: ${DB_USERNAME}
