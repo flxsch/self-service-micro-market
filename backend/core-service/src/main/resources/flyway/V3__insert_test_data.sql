@@ -1,10 +1,10 @@
 INSERT INTO users (id, first_name, last_name, email, birth_date, language, created_at, created_by_user_id)
 VALUES
-    ('1', 'Alice', 'Smith', 'alice@example.com', '1990-01-15', 'EN', NOW(), 'admin'),
-    ('2', 'Bob', 'Johnson', 'bob@example.com', '1988-07-23', 'EN', NOW(), 'admin'),
-    ('3', 'Charlie', 'Lee', 'charlie@example.com', '1992-03-10', 'EN', NOW(), 'admin'),
-    ('4', 'Diana', 'Nguyen', 'diana@example.com', '1995-12-01', 'EN', NOW(), 'admin'),
-    ('5', 'Eve', 'Martinez', 'eve@example.com', '1991-06-18', 'EN', NOW(), 'admin');
+    ('1', 'Alice', 'Smith', 'alice@example.com', TO_DATE('1990-01-15','YYYY-MM-DD'), 'EN', NOW(), 'admin'),
+    ('2', 'Bob', 'Johnson', 'bob@example.com', TO_DATE('1988-07-23','YYYY-MM-DD'), 'EN', NOW(), 'admin'),
+    ('3', 'Charlie', 'Lee', 'charlie@example.com', TO_DATE('1992-03-10','YYYY-MM-DD'), 'EN', NOW(), 'admin'),
+    ('4', 'Diana', 'Nguyen', 'diana@example.com', TO_DATE('1995-12-01','YYYY-MM-DD'), 'EN', NOW(), 'admin'),
+    ('5', 'Eve', 'Martinez', 'eve@example.com', TO_DATE('1991-06-18','YYYY-MM-DD'), 'EN', NOW(), 'admin');
 
 INSERT INTO product (id, name, category, stock, price, barcode, created_at, created_by_user_id)
 VALUES
