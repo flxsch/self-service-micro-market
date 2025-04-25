@@ -19,13 +19,13 @@ public abstract class ExtendedEntity {
     @Column(name = "id", updatable = false, nullable = false)
     private String id;
 
-    @Column
+    @Column(nullable = false, updatable = false)
     private String createdByUserId;
 
     @Column
     private String updatedByUserId;
 
-    @JoinColumn(updatable = false)
+    @JoinColumn(nullable = false, updatable = false)
     protected LocalDateTime createdAt;
 
     @Column
