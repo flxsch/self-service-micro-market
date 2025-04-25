@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -22,10 +21,14 @@ public class ProductController {
 
     @GetMapping({"", "/"})
     public ResponseEntity<Collection<ProductDTO>> getAllProducts() {
+        try {
         return new ResponseEntity<>(
                 productMapper.toDTOs(productService.findAll()),
                 HttpStatus.OK
         );
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping({"/{id}", "/{id}/"})
@@ -43,8 +46,12 @@ public class ProductController {
 
     @PostMapping({"", "/"})
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO product) {
-        Product created = productService.save(productMapper.fromDTO(product));
-        return new ResponseEntity<>(productMapper.toDTO(created), HttpStatus.CREATED);
+        try {
+            Product created = productService.save(productMapper.fromDTO(product));
+            return new ResponseEntity<>(productMapper.toDTO(created), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping({"/{id}", "/{id}/"})
