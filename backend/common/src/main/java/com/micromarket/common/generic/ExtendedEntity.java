@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.annotations.UuidGenerator;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -14,18 +18,17 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class ExtendedEntity {
     @Id
-    @GeneratedValue(generator = "UUID")
     @UuidGenerator
     @Column(name = "id", updatable = false, nullable = false)
     private String id;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name="created_by", nullable = false, updatable = false)
     private String createdByUserId;
 
-    @Column
-    private String updatedByUserId;
+    @Column(name="last_Modified_by")
+    private String lastModifiedBy;
 
-    @JoinColumn(nullable = false, updatable = false)
+    @Column(name="created_at", nullable = false, updatable = false)
     protected LocalDateTime createdAt;
 
     @Column
