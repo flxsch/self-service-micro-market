@@ -34,9 +34,9 @@ public class UserController {
         if (inputedUser.getCreatedByUserId() == null) {
             inputedUser.setCreatedByUserId("This User");
         }
-        inputedUser.setCreatedAt(now());
+        inputedUser.setCreatedAt(now().toString());
         inputedUser.setLastModifiedBy(inputedUser.getCreatedByUserId());
-        inputedUser.setUpdatedAt(now());
+        inputedUser.setUpdatedAt(now().toString());
         User user = userMapper.fromDTO(inputedUser);
         User createdUser = userService.save(user);
         return new ResponseEntity<>(userMapper.toDTO(createdUser), HttpStatus.OK);
@@ -53,7 +53,7 @@ public class UserController {
         if (inputedUser.getLastModifiedBy() == null) {
             inputedUser.setLastModifiedBy(inputedUser.getId());
         }
-        inputedUser.setUpdatedAt(now());
+        inputedUser.setUpdatedAt(now().toString());
         User newUser = userMapper.fromDTO(inputedUser);
         User updatedUser = null;
         try {
