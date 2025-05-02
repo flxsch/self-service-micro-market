@@ -7,4 +7,5 @@ import java.util.List;
 public interface OrderService extends ExtendedService<Order> {
     Order findByPaymentId(String paymentId);
     List<Product> findProductsByOrderId(String orderId);
+    List<Order> findOrdersByUserId(String userId);
 }

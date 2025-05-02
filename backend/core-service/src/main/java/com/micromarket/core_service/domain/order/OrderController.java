@@ -62,5 +62,10 @@ public class OrderController {
         return new ResponseEntity<>(productDTOs, HttpStatus.OK);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<OrderDTO>> getOrdersByUserId(@PathVariable String userId) {
+        List<Order> orders = orderService.findOrdersByUserId(userId);
+        return new ResponseEntity<>(orderMapper.toDTOs(orders), HttpStatus.OK);
+    }
 
 }

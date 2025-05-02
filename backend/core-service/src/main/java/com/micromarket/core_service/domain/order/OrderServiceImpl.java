@@ -27,5 +27,8 @@ public class OrderServiceImpl extends ExtendedServiceImpl<Order> implements Orde
                 .toList();
     }
 
-
+    @Override
+    public List<Order> findOrdersByUserId(String userId) {
+        return ((OrderRepository) repository).findByUserId(userId);
+    }
 }
