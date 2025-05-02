@@ -51,6 +51,26 @@ project(':common') {
 	}
 }
 
+project(':auth-service') {
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	dependencies {
+		implementation project(':common')
+
+		implementation 'org.keycloak:keycloak-admin-client:26.0.5'
+		implementation 'org.json:json:20250107'
+		implementation 'com.auth0:java-jwt:4.5.0'
+		implementation 'com.jayway.jsonpath:json-path:2.9.0'
+		compileOnly 'org.keycloak:keycloak-services:26.2.1'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+		implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	}
+}
+
 project(':core-service') {
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
@@ -58,6 +78,14 @@ project(':core-service') {
 	dependencies {
 		implementation project(':common')
 
+		// security
+		implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+		runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+		runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+		implementation 'com.nimbusds:nimbus-jose-jwt:9.47'
+
+		implementation 'org.springframework.security:spring-security-config:6.4.4'
+		implementation 'org.springframework.security:spring-security-web:6.4.4'
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 		implementation 'com.zaxxer:HikariCP:5.1.0'
 		runtimeOnly 'org.postgresql:postgresql'
@@ -73,6 +101,7 @@ project(':payment-service') {
 	dependencies {
 		implementation project(':common')
 
+		implementation 'org.springframework.security:spring-security-oauth2-resource-server:6.4.5'
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	}

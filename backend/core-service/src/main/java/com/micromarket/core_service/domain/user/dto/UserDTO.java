@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 @Getter
 @Setter
@@ -15,4 +16,6 @@ public class UserDTO extends BaseDTO {
     private String lastName;
     private String email;
     private String language;
+    @Nullable
+    private String keycloakId;
 }
