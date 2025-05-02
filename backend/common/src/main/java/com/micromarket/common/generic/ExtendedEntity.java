@@ -25,12 +25,12 @@ public abstract class ExtendedEntity {
     @Column(name="created_by", nullable = false, updatable = false)
     private String createdByUserId;
 
-    @Column(name="last_Modified_by")
+    @Column(name="last_modified_by")
     private String lastModifiedBy;
 
     @Column(name="created_at", nullable = false, updatable = false)
     protected LocalDateTime createdAt;
 
-    @Column
+    @Column(name="updated_at")
     protected LocalDateTime updatedAt;
 }

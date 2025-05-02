@@ -18,7 +18,6 @@ public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
 
-    @Autowired
     public UserController(final UserService userService, final UserMapper userMapper) {
         this.userService = userService;
         this.userMapper = userMapper;
@@ -31,13 +30,14 @@ public class UserController {
     }
 
     @PostMapping({"", "/"})
-    public ResponseEntity <UserDTO> createUser(@RequestBody User user) {
-        if (user.getCreatedByUserId() == null) {
-            user.setCreatedByUserId(user.getId());
+    public ResponseEntity <UserDTO> createUser(@RequestBody UserDTO inputedUser) {
+        if (inputedUser.getCreatedByUserId() == null) {
+            inputedUser.setCreatedByUserId("This User");
         }
-        user.setCreatedAt(now());
-        user.setLastModifiedBy(user.getCreatedByUserId());
-        user.setUpdatedAt(now());
+        inputedUser.setCreatedAt(now());
+        inputedUser.setLastModifiedBy(inputedUser.getCreatedByUserId());
+        inputedUser.setUpdatedAt(now());
+        User user = userMapper.fromDTO(inputedUser);
         User createdUser = userService.save(user);
         return new ResponseEntity<>(userMapper.toDTO(createdUser), HttpStatus.OK);
     }
@@ -49,11 +49,15 @@ public class UserController {
     }
 
     @PutMapping({"/{id}", "/{id}/"})
-    public ResponseEntity<UserDTO> updateUser(@PathVariable final String id, @RequestBody User user) {
-        user.setUpdatedAt(now());
+    public ResponseEntity<UserDTO> updateUser(@PathVariable final String id, @RequestBody UserDTO inputedUser) {
+        if (inputedUser.getLastModifiedBy() == null) {
+            inputedUser.setLastModifiedBy(inputedUser.getId());
+        }
+        inputedUser.setUpdatedAt(now());
+        User newUser = userMapper.fromDTO(inputedUser);
         User updatedUser = null;
         try {
-            updatedUser = userService.updateById(id, user);
+            updatedUser = userService.updateById(id, newUser);
         } catch (BadRequestException e) {
             throw new RuntimeException(e);
         }
