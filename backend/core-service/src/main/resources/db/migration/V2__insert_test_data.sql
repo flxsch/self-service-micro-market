@@ -43,7 +43,6 @@ VALUES
     ('34', '5', 'PAY-009', NOW(), '0'),
     ('35', '5', 'PAY-010', NOW(), '0');
 
-
 INSERT INTO order_product (id, order_id, product_id, amount)
 VALUES
     ('36', '26', '6', 2),
