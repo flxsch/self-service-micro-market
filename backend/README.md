@@ -49,8 +49,8 @@ To write comments in our Java Code we use JavaDoc. More information can be found
 ![java-doc.png](../misc/java-doc.png)
 
 ### Endpoints
-To document our endpoints we're going to use swagger
-**TODO** ADD LINK
+To document our endpoints we're going to use swagger:
+[Self Service Micro Market](https://app.swaggerhub.com/apis/JeromeTownsend/MiniMarket/1.0.0)
 
 ## Testing
 ### Integration Tests
