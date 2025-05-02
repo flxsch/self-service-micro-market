@@ -1,7 +1,9 @@
-## Table of contents
-- [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Getting started](#getting-started)
+    * [Run](#run)
+    * [Debug](#debug)
+    * [Postman](#postman)
+- [Keycloak](#keycloak)
 - [Coding standards](#coding-standards)
     * [Naming](#naming)
     * [Structure](#structure)
@@ -9,6 +11,8 @@
         + [JavaDoc](#javadoc)
     * [Endpoints](#endpoints)
 - [Testing](#testing)
+    * [Integration Tests](#integration-tests)
+    * [Example](#example)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -16,14 +20,27 @@
 - Java 21
 
 ## Getting started
-To run a specific service
+### Run
 1. Change to backend root `cd backend`
 2. Start the DB `docker compose -p "micro-market-db" up -d`
 3. Build common project `./gradlew.bat :common:build`
 4. Run microservice `./gradlew.bat :{SERVICENAME}:bootRun`
 
-## Postman
+> ### Debug
+> 1. Run microservice with `./gradlew.bat :{SERVICENAME}:bootRun --debug-jvm`
+> 2. Add config for debugger ![img.png](../misc/how-to-debug.png)
+> 3. Run debugger configuration
+
+### Postman
 https://www.postman.com/lively-crater-269365/self-service-micro-market/overview
+
+## Keycloak
+![security-diagram.png](../misc/security-diagram.png)
+1. Create the realm `self-service-micro-market`
+2. Create client 'postman-client'
+3. Create roles
+4. Create users and assign roles (USER, ADMIN)
+5. Populate `.env` and `auth-service/application.properties` (clientId find in request in postman `DEBUG keycloak clients`, don't forget to update admin token in headers with `DEBUG keycloak admin token`)
 
 ## Coding standards
 ### Naming

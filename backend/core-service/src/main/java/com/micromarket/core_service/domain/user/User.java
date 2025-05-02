@@ -29,6 +29,8 @@ public class User extends ExtendedEntity {
     @Column(name = "language")
     private String language;
 
+    @Column(name = "keycloak_id")
+    private String keycloakId;
     public User() {
         super();
     }

@@ -19,3 +19,13 @@ services:
       POSTGRES_DB: ${DB_PAYMENT_NAME}
     ports:
       - ${DB_PAYMENT_PORT}:${DB_DOCKER_PORT}
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    command: start-dev

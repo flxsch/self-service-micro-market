@@ -4,6 +4,7 @@ import com.micromarket.core_service.domain.product.dto.ProductDTO;
 import com.micromarket.core_service.domain.product.dto.ProductMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -18,6 +19,23 @@ public class ProductController {
     public ProductController(ProductService productService, ProductMapper productMapper) {
         this.productService = productService;
         this.productMapper = productMapper;
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping({"/user-protected", "/user-protected/"})
+    public ResponseEntity<String> protectedResource() {
+        return new ResponseEntity<>(
+                "user protected 👌",
+                HttpStatus.OK
+        );
+    }
+
+    @GetMapping({"/unprotected", "/unprotected/"})
+    public ResponseEntity<String> unprotectedResource() {
+        return new ResponseEntity<>(
+                "unprotected 👌",
+                HttpStatus.OK
+        );
     }
 
     @GetMapping({"", "/"})

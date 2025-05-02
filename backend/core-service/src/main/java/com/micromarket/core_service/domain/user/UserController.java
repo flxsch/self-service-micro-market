@@ -3,7 +3,6 @@ package com.micromarket.core_service.domain.user;
 import com.micromarket.core_service.domain.user.dto.UserDTO;
 import com.micromarket.core_service.domain.user.dto.UserMapper;
 import org.apache.coyote.BadRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +20,26 @@ public class UserController {
     public UserController(final UserService userService, final UserMapper userMapper) {
         this.userService = userService;
         this.userMapper = userMapper;
+
+    }
+
+    @PostMapping({"", "/"})
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user) {
+        if (user.getKeycloakId() == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        User createdUser = userService.save(userMapper.fromDTO(user));
+        return new ResponseEntity<>(userMapper.toDTO(createdUser), HttpStatus.OK);
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UserDTO> retrieveById(@PathVariable String email) {
+        try {
+            User user = userService.findByEmail(email);
+            return new ResponseEntity<>(userMapper.toDTO(user), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping({"", "/"})
@@ -29,27 +48,14 @@ public class UserController {
         return new ResponseEntity<>(userMapper.toDTOs(user), HttpStatus.OK);
     }
 
-    @PostMapping({"", "/"})
-    public ResponseEntity <UserDTO> createUser(@RequestBody UserDTO inputedUser) {
-        if (inputedUser.getCreatedByUserId() == null) {
-            inputedUser.setCreatedByUserId("This User");
-        }
-        inputedUser.setCreatedAt(now().toString());
-        inputedUser.setLastModifiedBy(inputedUser.getCreatedByUserId());
-        inputedUser.setUpdatedAt(now().toString());
-        User user = userMapper.fromDTO(inputedUser);
-        User createdUser = userService.save(user);
-        return new ResponseEntity<>(userMapper.toDTO(createdUser), HttpStatus.OK);
-    }
-
     @GetMapping({"/{id}", "/{id}/"})
-    public ResponseEntity<UserDTO> getUserById(@PathVariable final String id) {
+    public ResponseEntity<UserDTO> getUserById(@PathVariable String id) {
         User user = userService.findById(id);
         return new ResponseEntity<>(userMapper.toDTO(user), HttpStatus.OK);
     }
 
     @PutMapping({"/{id}", "/{id}/"})
-    public ResponseEntity<UserDTO> updateUser(@PathVariable final String id, @RequestBody UserDTO inputedUser) {
+    public ResponseEntity<UserDTO> updateUser(@PathVariable String id, @RequestBody UserDTO inputedUser) {
         if (inputedUser.getLastModifiedBy() == null) {
             inputedUser.setLastModifiedBy(inputedUser.getId());
         }
@@ -65,7 +71,7 @@ public class UserController {
     }
 
     @DeleteMapping({"/{id}", "/{id}/"})
-    public ResponseEntity<UserDTO> deleteUser(@PathVariable final String id) {
+    public ResponseEntity<UserDTO> deleteUser(@PathVariable String id) {
         try {
             userService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
